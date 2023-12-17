@@ -1,5 +1,10 @@
 const u32 gObjectEventPic_BrendanNormal[] = INCBIN_U32("graphics/object_events/pics/people/brendan/walking.4bpp");
 const u32 gObjectEventPic_BrendanRunning[] = INCBIN_U32("graphics/object_events/pics/people/brendan/running.4bpp");
+//CUSTOM GRAPHICS HERE
+const u32 gObjectEventPic_IcarusWalking[] = INCBIN_U32("graphics/object_events/pics/people/icarus/walking.4bpp"); 
+const u16 gObjectEventPal_IcarusWalking[] = INCBIN_U16("graphics/object_events/pics/people/icarus/walking.gbapal");
+const u32 gObjectEventPic_SundanceWalking[] = INCBIN_U32("graphics/object_events/pics/people/sundance/walking.4bpp");
+const u16 gObjectEventPal_SundanceWalking[] = INCBIN_U16("graphics/object_events/pics/people/sundance/walking.gbapal");
 const u16 gObjectEventPal_Brendan[] = INCBIN_U16("graphics/object_events/palettes/brendan.gbapal");
 const u32 gObjectEventPic_RubySapphireBrendanNormal[] = INCBIN_U32("graphics/object_events/pics/people/ruby_sapphire_brendan/walking.4bpp");
 const u32 gObjectEventPic_RubySapphireBrendanRunning[] = INCBIN_U32("graphics/object_events/pics/people/ruby_sapphire_brendan/running.4bpp");
