@@ -1654,6 +1654,34 @@ static void Task_PCMainMenu(u8 taskId)
         }
         break;
     }
+    
+}
+
+//custom work
+static void Task_PCMainMenuCOPY(u8 taskId)
+{
+    struct Task *task = &gTasks[taskId];
+
+    switch (task->tState)
+    {
+    case 0:
+        FadeScreen(FADE_TO_BLACK, 0);
+        task->tState++;
+        break;
+    case 1:
+        if (!gPaletteFade.active)
+        {
+            CleanupOverworldWindowsAndTilemaps();
+            EnterPokeStorage(OPTION_MOVE_MONS);
+            task->tState = 2;
+        }
+        break;
+    }
+    if (!IsComputerScreenOpenEffectActive())
+            {
+                SetMainCallback2(CB2_ReturnToField); // Return to the main game
+                DestroyTask(taskId); // Destroy the storage system task
+            }
 }
 
 void ShowPokemonStorageSystemPC(void)

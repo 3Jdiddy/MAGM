@@ -111,7 +111,6 @@ void ClearAllContestWinnerPics(void)
 
     ClearContestWinnerPicsInContestHall();
 
-    // Clear Museum paintings
     for (i = MUSEUM_CONTEST_WINNERS_START; i < NUM_CONTEST_WINNERS; i++)
         gSaveBlock1Ptr->contestWinners[i] = sContestWinnerPicDummy;
 }
@@ -126,7 +125,7 @@ static void ClearFrontierRecord(void)
 
 static void WarpToTruck(void)
 {
-    SetWarpDestination(MAP_GROUP(INSIDE_OF_TRUCK), MAP_NUM(INSIDE_OF_TRUCK), WARP_ID_NONE, -1, -1);
+    SetWarpDestination(MAP_GROUP(PETALBURG_CITY), MAP_NUM(PETALBURG_CITY), WARP_ID_NONE, 14, 21);
     WarpIntoMap();
 }
 

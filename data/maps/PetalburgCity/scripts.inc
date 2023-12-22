@@ -765,3 +765,93 @@ PetalburgCity_Text_ImLookingForTalentedTrainers:
 	.string "I'm roaming the land in search of\n"
 	.string "talented TRAINERS.\p"
 	.string "I'm sorry to have taken your time.$"
+
+FirstCutScene::
+    lockall
+	hideobjectat OBJ_EVENT_ID_PLAYER, MAP_PETALBURG_CITY_HOUSE2
+    faceplayer
+    applymovement OBJ_EVENT_ID_PLAYER, MyEvent_Movement_PlayerCircle
+    waitmovement 0
+    msgbox MyEvent_Text_PlayerDialogue, MSGBOX_DEFAULT
+    closemessage
+    release
+    end
+
+MyEvent_Movement_PlayerCircle::
+    walk_right
+    walk_right
+    walk_down
+    walk_down
+    walk_left
+    walk_left
+    walk_up
+    walk_up
+    step_end
+
+MyEvent_Text_PlayerDialogue::
+    .string "WOAH$"
+
+startersToPC::
+    lockall
+    checkplayergender
+	compare VAR_RESULT, MALE
+    goto_if_eq MalePokemon
+    goto_if_gt FemalePokemon
+	goto_if_lt FemalePokemon
+
+MalePokemon::
+    givemon SPECIES_PORYGON, 25, ITEM_NONE
+    givemon SPECIES_PAWNIARD, 25, ITEM_NONE
+    givemon SPECIES_ZUBAT, 25, ITEM_NONE
+    givemon SPECIES_TANGELA, 25, ITEM_NONE
+    givemon SPECIES_SHELLOS, 25, ITEM_NONE
+    givemon SPECIES_VULPIX, 25, ITEM_NONE
+    givemon SPECIES_FLAAFFY, 25, ITEM_NONE
+    givemon SPECIES_ABSOL, 25, ITEM_NONE
+    givemon SPECIES_WINGULL, 25, ITEM_NONE
+    goto EndScript
+
+FemalePokemon::
+    givemon SPECIES_EEVEE, 25, ITEM_NONE
+    givemon SPECIES_MURKROW, 25, ITEM_NONE
+    givemon SPECIES_TRAPINCH, 25, ITEM_NONE
+    givemon SPECIES_SHROOMISH, 25, ITEM_NONE
+    givemon SPECIES_MAGIKARP, 15, ITEM_NONE
+    givemon SPECIES_NINETALES, 25, ITEM_NONE
+    givemon SPECIES_MAGNEMITE, 25, ITEM_NONE
+    givemon SPECIES_GLOOM, 25, ITEM_NONE
+    givemon SPECIES_SLAKOTH, 25, ITEM_NONE
+    goto EndScript
+
+EndScript::
+	removeobject 1, MAP_PETALBURG_CITY
+	special ShowPokemonStorageSystemPC
+    waitstate
+    setflag FLAG_UNUSED_0x020
+	setflag FLAG_SYS_POKEMON_GET
+    releaseall
+    end
+
+@ Tile event script
+TileEventScript::
+    lock
+    getpartysize
+    compare VAR_RESULT, 0
+    goto_if_ne EndScript2
+    fadescreen FADE_TO_BLACK
+    msgbox NoPokemonText, MSGBOX_SIGN
+    waitmessage
+    closemessage
+    special DoSoftReset
+
+EndScript2::
+    release
+    end
+
+NoPokemonText::
+    .string "You ventured bravely into the\n"
+	.string "journey ahead without a single\l" 
+	.string "Pokémon...\p"
+    .string "Quickly overwhelmed by the trials\n"
+	.string "ahead, your adventure came to an\l"
+	.string "abrupt END."
