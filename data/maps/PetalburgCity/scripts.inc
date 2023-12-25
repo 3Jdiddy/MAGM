@@ -845,6 +845,7 @@ TileEventScript::
     special DoSoftReset
 
 EndScript2::
+	setflag FLAG_BADGE08_GET
     release
     end
 
@@ -855,3 +856,43 @@ NoPokemonText::
     .string "Quickly overwhelmed by the trials\n"
 	.string "ahead, your adventure came to an\l"
 	.string "abrupt END."
+
+firstBoss::
+    lock
+    playmoncry SPECIES_ALTARIA, CRY_MODE_NORMAL
+    waitmoncry
+    setwildbattle SPECIES_ALTARIA, 35, ITEM_NONE, SPECIES_NONE
+    dowildbattle
+    removeobject 1
+	setflag FLAG_UNUSED_0x021
+	special HealPlayerParty
+    warp MAP_SLATEPORT_CITY, 1
+	release
+	end
+
+MountainMouth_Event::
+    call_if_set FLAG_UNUSED_0x022, AlreadyAsked
+    lock
+    msgbox MountainMouth_Text_Query, MSGBOX_YESNO
+    compare VAR_RESULT, YES
+    goto_if_eq WarpToMauville
+    release
+    end
+
+AlreadyAsked::
+    lock
+    faceplayer
+    msgbox MountainMouth_Text_QueryAgain, MSGBOX_YESNO
+    goto WarpToMauville
+    
+WarpToMauville::
+    warp 0x7, 0x6, 
+    setflag FLAG_UNUSED_0x022
+    release
+    end
+
+MountainMouth_Text_Query::
+    .string "Step into the mouth of The Mountain?$"
+
+MountainMouth_Text_QueryAgain::
+    .string "Step into the mouth of The Mountain?$"

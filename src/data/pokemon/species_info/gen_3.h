@@ -4889,10 +4889,10 @@ const struct SpeciesInfo gSpeciesInfoGen3[] =
     [SPECIES_ALTARIA] =
     {
         ALTARIA_MISC_INFO,
-        .baseHP        = 75,
+        .baseHP        = 375,
         .baseAttack    = 70,
         .baseDefense   = 90,
-        .baseSpeed     = 80,
+        .baseSpeed     = 20,
         .baseSpAttack  = 70,
         .baseSpDefense = 105,
         .types = { TYPE_DRAGON, TYPE_FLYING },

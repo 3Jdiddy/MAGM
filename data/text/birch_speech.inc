@@ -29,7 +29,7 @@ gText_Birch_YourePlayer::
 	.string "I...{PAUSE 50} don't know,{PAUSE 10} my love.\p"
 	.string "...\p"
 	.string "We'll only know when you come of age\n"
-	.string "age and climb {COLOR RED}Mt. Massive{COLOR DARK_GRAY}.\p"
+	.string "and climb {COLOR RED}Mt. Massive{COLOR DARK_GRAY}.\p"
 	.string "...$"
 
 gText_Birch_AreYouReady::
